@@ -1,0 +1,15 @@
+{
+  "name": "pdfgen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Francisco Pérez Cejuela",
+  "license": "ISC",
+  "dependencies": {
+    "jspdf": "^1.5.3"
+  }
+}
