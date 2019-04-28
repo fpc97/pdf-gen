@@ -12,7 +12,5 @@
   "dependencies": {
     "jspdf": "^1.5.3"
   },
-  "devDependencies": {
-    "require": "^2.4.20"
-  }
+  "devDependencies": {}
 }
