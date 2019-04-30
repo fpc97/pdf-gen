@@ -8,8 +8,49 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
 </head>
-<body>
-    
+<body class="body">
+    <main class="main-wrapper">
+        <div class="h-wrap">
+            <h1 class="h1">Generar Documento PDF</h1>
+        </div>
+        <section class="contenido">
+            <div class="mitad-input">
+                <form class="fp">
+                    <fieldset class="fieldset">
+                        <legend class="legend">Autor</legend>
+                        <input class="input input-txt" type="text" id="us-nombre" placeholder="Nombre">
+                        <input class="input input-txt" type="text" id="us-apellido" placeholder="Apellido">
+                    </fieldset>
+                    <fieldset class="fieldset">
+                        <legend class="legend">Documento</legend>
+                        <input class="input input-txt" type="text" id="post-titulo" placeholder="Titulo*">
+                        <textarea class="input input-txtarea" type="text" id="post-contenido" placeholder="Contenido* (máximo: 200 carácteres)"></textarea>
+                        <p class="texto-contador" id="texto-contador">0/200</p>
+                    </fieldset>
+                    <input class="input input-btn generar" href="#" type="button" id="generar" value="Generar">
+                </form>
+                <div class="panel-descarga">
+                    <div class="wrap-titulo-descarga">
+                        <h2 class="titulo-descarga">Descargar</h2>
+                    </div>
+                    <div class="descarga descarga-directa">
+                        <input class="btn btn-descarga" type="button" value="Descarga directa">
+                        <span class="nombre-archivo">nombre_del_coso.pdf</span>
+                    </div>
+                    <div class="descarga descarga-email">
+                        <!--Acá poner la imagen esa del corro-->
+                        <input class="btn btn-descarga" type="button" value="Enviar por mail">
+                        <input class="input input-txt input-mail" type="text" placeholder="Dirección de e-mail">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mitad-preview">
+                
+            </div>
+        </section>
+    </main>
+
     <script src="js/main.js"></script>
 </body>
 </html>

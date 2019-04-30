@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile:sass": "node-sass css/ss.scss css/main.css -w --use-polling"
   },
   "keywords": [],
   "author": "Francisco Pérez Cejuela",
@@ -12,5 +12,7 @@
   "dependencies": {
     "jspdf": "^1.5.3"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "node-sass": "^4.12.0"
+  }
 }

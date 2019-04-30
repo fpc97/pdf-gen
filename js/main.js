@@ -1,6 +1,2 @@
-var doc = new jsPDF();
-
-doc.text('Hola, amiwen!', 10, 10);
-//doc.save('oslo.pdf');
-
-console.log(doc);
+// Textarea
+document.getElementById("post-contenido").addEventListener("input", console.log("asddsa"));
