@@ -1,8 +1,26 @@
 // Inicializacion
 window.addEventListener('DOMContentLoaded', init);
 
+function desactivarDescargas() {
+    let desc = Array.prototype.slice.call(document.getElementsByClassName('activable'));
+    desc.map(x => {
+        console.log(x);
+        x.disabled = true;
+        x.classList.add('desactivado');
+    });
+}
+
+function activarDescargas() {
+    let desc = Array.prototype.slice.call(document.getElementsByClassName('activable'));
+    desc.map(x => {
+        x.disabled = false;
+        x.classList.remove('desactivado');
+    });
+}
+
 function init() {
     document.getElementById('generar').addEventListener('click', generacion);
+    desactivarDescargas();
 }
 
 // Validacion de input
@@ -54,6 +72,8 @@ function generarPdf(nombre, apellido, titulo, contenido) {
     document.getElementById('pdf-preview').setAttribute('src', string + "#toolbar=0");
 }
 
+// Desbloquear descarga
+
 // Generacion de documento
 function generacion() {
     const forma = document.getElementById('fp');
@@ -70,5 +90,6 @@ function generacion() {
 
     if (valido) {
         generarPdf(autorNombre.value, autorApellido.value, postTitulo.value, postContenido.value);
+        activarDescargas();
     }
 }
