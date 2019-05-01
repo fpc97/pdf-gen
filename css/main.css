@@ -79,7 +79,8 @@ body {
   margin-bottom: 1rem;
   height: 3.7rem;
   border-radius: 2px;
-  border: 1px solid #aeafb2; }
+  border: 1px solid #aeafb2;
+  letter-spacing: .1rem; }
   .input-txt {
     background-color: #f5f8fa;
     width: 483px;
@@ -97,19 +98,35 @@ body {
     margin-bottom: .3rem; }
   .input-txtarea:focus {
     background-color: white; }
-  .input-img {
-    font-size: 1.5rem;
-    background-color: #6277a3;
-    margin-right: auto;
-    margin-left: 8.5px;
-    color: white;
-    border: none; }
   .input-btn {
     font-size: 2rem;
     background-image: linear-gradient(0.1turn, #ff4d2e, #ff743d);
     border: none;
     color: white;
     cursor: pointer; }
+
+.input:invalid {
+  box-shadow: none;
+  background-color: #f5f8fa; }
+  .input:invalid:focus {
+    background-color: white; }
+
+.activarequired:invalid {
+  box-shadow: none;
+  background-color: #ffe0e0; }
+  .activarequired:invalid:focus {
+    background-color: #ffebeb; }
+
+.mensaje-error {
+  background-color: #ffe0e0;
+  margin: 1rem 8.5px;
+  padding: 1rem;
+  font-size: 1.6rem;
+  color: #4d4d4d; }
+  .mensaje-error * {
+    margin-bottom: .5rem; }
+    .mensaje-error *:last-child {
+      margin-bottom: 0; }
 
 .texto-contador {
   color: #8a8a8a;
