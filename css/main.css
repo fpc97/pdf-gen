@@ -59,6 +59,9 @@ body {
   width: 500px;
   height: 707px; }
 
+.btn {
+  cursor: pointer; }
+
 .fp {
   margin-bottom: 6vh; }
 
@@ -215,7 +218,8 @@ body {
 
 .input-mail {
   width: 27.6rem;
-  float: right; }
+  float: right;
+  cursor: text; }
 
 .desactivado {
   background-image: none;

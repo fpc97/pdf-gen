@@ -27,6 +27,7 @@ function desactivarDescargas() {
     let desc = Array.prototype.slice.call(document.getElementsByClassName('activable'));
     desc.map(x => {
         x.disabled = true;
+        x.classList.remove('btn');
         x.classList.add('desactivado');
     });
 }
@@ -36,6 +37,7 @@ function activarDescargas() {
     desc.map(x => {
         x.disabled = false;
         x.classList.remove('desactivado');
+        x.classList.add('btn');
     });
     document.getElementById('desc-dct-btn').addEventListener('click', descargaDirecta);
 }
@@ -435,6 +437,7 @@ function generacionDoc() {
 
 // DESCARGA DE DOCUMENTO
 
-function descargaDirecta(asd) {
-    doc.save(`${asd.titulo}.pdf`)
+function descargaDirecta() {
+    let doc = generarPdf(DOCUMENTO_PRINCIPAL);
+    doc.save(`${DOCUMENTO_PRINCIPAL.nombreInterno}.pdf`);
 }
