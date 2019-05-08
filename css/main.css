@@ -138,8 +138,30 @@ body {
   display: inline-block; }
 
 .diseno-radio {
-  background-color: #f00;
-  border-radius: 0; }
+  background-image: url(../svg/estilo1.svg);
+  border-radius: 0;
+  display: none; }
+  .diseno-radio:checked + .diseno-label img {
+    height: 6.5rem; }
+
+.diseno-label {
+  position: relative;
+  display: inline-block;
+  height: 4.5rem;
+  width: 6.5rem;
+  margin-right: 5px;
+  cursor: pointer; }
+  .diseno-label img {
+    border-radius: 1.2px;
+    position: absolute;
+    height: 4.5rem;
+    width: 6.5rem;
+    object-fit: cover;
+    object-position: 0;
+    background-color: white;
+    transition: height .2s; }
+    .diseno-label img:hover {
+      opacity: .8; }
 
 .generar {
   display: inline-block;

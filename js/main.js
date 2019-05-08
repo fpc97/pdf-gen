@@ -250,7 +250,7 @@ function generarPdf(arch) {
             nuevo.setFontSize(14);
             nuevo.text(
                 doc.contenido,
-                564,
+                559,
                 122,
                 {
                     maxWidth: 376,
