@@ -128,15 +128,22 @@ body {
     .mensaje-error *:last-child {
       margin-bottom: 0; }
 
-.texto-contador {
-  color: #8a8a8a;
-  font-size: 1.5rem;
-  margin-right: auto;
-  margin-left: 8.5px; }
+.forma-final {
+  display: flex;
+  flex-flow: nowrap row;
+  align-items: center;
+  margin: 0 8.5px; }
+
+.forma-disenos {
+  display: inline-block; }
+
+.diseno-radio {
+  background-color: #f00;
+  border-radius: 0; }
 
 .generar {
-  display: block;
-  margin-top: .4rem;
+  display: inline-block;
+  margin-top: .7rem;
   margin-right: 8.5px;
   margin-left: auto;
   padding: 0 2.8rem .3rem;

@@ -72,22 +72,36 @@ function validacionInput(cont, funct, msg, ...campos) {
 }
 
 function recortarFrase(input, largoMax) {
+    // recortarFrase() corta el input en el ultimo espacio dentro 
+    // del largo maximo con tal de no cortar una palabra por la mitad
+
+    // Si el input esta por debajo del largo maximo lo devuelve como esta
     if (input.length <= largoMax) return input;
+
     let caracteres = [...input];
     let indice = 0;
+
+    // Corta solo en los espacios
     for (let i = 0; i < largoMax + 1; i++) {
         if (caracteres[i] === ' ') indice = i;
     }
+
+    // Si no hay espacios corta en el largo maximo
     if (indice === 0) {
         indice = largoMax + 1;
     }
+
     return input.slice(0, indice);
 }
 
 function borrarEspaciosRepetidos(s) {
+    // Quita los espacios del principio y el final de s y pasa a array
     let sArr = [...s.trim()];
+
     let sNuevo = "";
     let enEspacio = false;
+
+    // Solo toma el primer espacio de cualquier fila de espacios seguidos
     for (let i of sArr) {
         if (i == ' ' && !enEspacio) {
             sNuevo += i;
@@ -102,7 +116,7 @@ function borrarEspaciosRepetidos(s) {
 }
 
 // GENERACION DE DOCUMENTO
-function esMes(n){
+function mesEsp(n){
     const meses = [
         'enero',
         'febrero',
@@ -117,14 +131,13 @@ function esMes(n){
         'noviembre',
         'diciembre'
     ]
-
     return meses[n];
 }
 
 function generarMjeCreacion(arch) {
     let str = 'Este documento fue generado';
 
-    // Todo lo que es autor
+    // Autor
     let autorNombre = arch.autorNombre;
     let autorApellido = arch.autorApellido;
     if (autorNombre || autorApellido) {
@@ -135,7 +148,7 @@ function generarMjeCreacion(arch) {
 
     // Fecha
     let fecha = new Date();
-    let mes = esMes(fecha.getMonth());
+    let mes = mesEsp(fecha.getMonth());
     let dia = fecha.getDate();
 
     if (dia === 1) str += ' a 1 día';
@@ -264,36 +277,36 @@ function generarPdf(arch) {
 
         // ESTILO 3
         function(nuevo, doc) {
-            nuevo.setFillColor(195, 192, 224);
-            nuevo.rect(30, 30, 58, 245, "F");
+            nuevo.setFillColor(182, 214, 209);  // Verde suave
+            nuevo.rect(31, 28, 78, 245, "F");
+            nuevo.rect(100, 185, 431, 88, "F");
 
-            nuevo.setFillColor(98, 94, 170);
-            nuevo.rect(30, 30, 6, 245, "F");
-            nuevo.rect(31, 50, 530, 41, "F");
-            nuevo.rect(109, 271, 383, 3, "F");
-            nuevo.rect(109, 211, 383, 3, "F");
+            nuevo.setFillColor(92, 168, 156);    // Verde fuerte
+            nuevo.rect(41, 49, 523, 46, "F");
+            nuevo.rect(41, 103, 58, 170, "F");
+            nuevo.rect(109, 211, 454, 41, "F");
+            nuevo.rect(109, 260, 454, 14, "F");
 
-            nuevo.setTextColor(255, 255, 255);
-            nuevo.setFontSize(24);
-            nuevo.text(
-                doc.titulo.toUpperCase(),
-                542,
-                79,
-                {
-                    align: 'right',
-                    maxWidth: 500
-                }
-            );
-
-            nuevo.setTextColor(57, 63, 75);
+            // Texto
+            nuevo.setTextColor(57, 63, 75);     // Negro
             nuevo.setFontSize(14);
             nuevo.text(
                 doc.contenido,
-                116,
-                116,
+                123,
+                117,
                 {
                     maxWidth: 376,
-                    align: 'justify'
+                }
+            );
+
+            nuevo.setTextColor(255, 255, 255);  // Blanco
+            nuevo.setFontSize(24);
+            nuevo.text(
+                doc.titulo.toUpperCase(),
+                70,
+                83,
+                {
+                    maxWidth: 480
                 }
             );
 
@@ -302,52 +315,58 @@ function generarPdf(arch) {
             nuevo.setFontStyle('bolditalic');
             nuevo.text(
                 mjeCreacion,
-                116,
-                230,
+                120,
+                225,
                 {
-                    maxWidth: 360,
-                    align: 'justify'
+                    maxWidth: 375,
                 }
             );
+
 
             return nuevo;
         },
 
         // ESTILO 4
         function(nuevo, doc) {
-            nuevo.setFillColor(195, 192, 224);
-            nuevo.rect(30, 30, 58, 245, "F");
+            nuevo.setFillColor(247, 220, 196);  // Anaranjado suave
+            nuevo.rect(31, 28, 65, 58, "F");
+            nuevo.rect(31, 97, 65, 177, "F");
+            nuevo.rect(102, 192, 420, 41, "F");
+            nuevo.rect(102, 192, 379, 82, "F");
+            nuevo.circle(481, 233, 41, 'F');
 
-            nuevo.setFillColor(98, 94, 170);
-            nuevo.rect(30, 30, 6, 245, "F");
-            nuevo.rect(31, 50, 530, 41, "F");
-            nuevo.rect(109, 271, 383, 3, "F");
-            nuevo.rect(109, 211, 383, 3, "F");
+            nuevo.setFillColor(247, 142, 50);   // Anaranjado fuerte
+            nuevo.rect(31, 83, 533, 8, "F");
+            nuevo.rect(102, 97, 405, 117, "F");
+            nuevo.rect(102, 97, 462, 60, "F");
+            nuevo.circle(507, 157, 57, 'F');
 
-            nuevo.setTextColor(255, 255, 255);
+            // Texto
+            nuevo.setTextColor(247, 142, 50);   // Anaranjado fuerte
             nuevo.setFontSize(24);
             nuevo.text(
                 doc.titulo.toUpperCase(),
-                542,
+                543,
                 79,
                 {
                     align: 'right',
-                    maxWidth: 500
+                    maxWidth: 440
                 }
             );
 
-            nuevo.setTextColor(57, 63, 75);
+            nuevo.setTextColor(255, 255, 255);   // Blanco
             nuevo.setFontSize(14);
             nuevo.text(
                 doc.contenido,
-                116,
-                116,
+                109,
+                125,
                 {
                     maxWidth: 376,
                     align: 'justify'
                 }
             );
 
+            nuevo.setTextColor(57, 63, 75);   // Negro
             let mjeCreacion = generarMjeCreacion(doc);
             nuevo.setFontSize(11);
             nuevo.setFontStyle('bolditalic');
@@ -370,17 +389,22 @@ function generarPdf(arch) {
 }
 
 function mostrarPreview(doc) {
+    // Pasa el documento a base64
     let pdfURI = doc.output('datauristring');
+
+    // Hace que el <iframe> visualize el codigo base64 generado
     document.getElementById('pdf-preview').setAttribute('src', pdfURI);
 }
 
 function generacionDoc() {
+    // Toma el input de la forma
     const forma = document.getElementById('fp');
     const autorNombre = forma['us-nombre'];
     const autorApellido = forma['us-apellido'];
     const postTitulo = forma['post-titulo'];
     const postContenido = forma['post-contenido'];
 
+    // Valida el input - En caso de no ser valido genera mensajes de error
     let valido = validacionInput(
         document.getElementById('mensaje-error'),
         x => {
@@ -390,13 +414,19 @@ function generacionDoc() {
         postTitulo,
         postContenido);
 
+    
     if (valido) {
+        // Procesa el input
         let nuevoTitulo = recortarFrase(borrarEspaciosRepetidos(postTitulo.value), 35);
         let nuevoContenido = postContenido.value;
         let nuevoNombre = recortarFrase(borrarEspaciosRepetidos(autorNombre.value), 20);
         let nuevoApellido = recortarFrase(borrarEspaciosRepetidos(autorApellido.value), 20);
+        let nuevoEstilo = parseInt(document.querySelector('input[name="diseno"]:checked').value);
 
-        DOCUMENTO_PRINCIPAL.cambiarInfo(nuevoTitulo, nuevoContenido, nuevoNombre, nuevoApellido, 1);
+        // Reescribe el documento con el input
+        DOCUMENTO_PRINCIPAL.cambiarInfo(nuevoTitulo, nuevoContenido, nuevoNombre, nuevoApellido, nuevoEstilo);
+        
+        // Muestra el documento en el <iframe>
         mostrarPreview(generarPdf(DOCUMENTO_PRINCIPAL));
 
         activarDescargas();
