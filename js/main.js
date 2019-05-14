@@ -1,3 +1,6 @@
+// ID: documento_envio
+// API Key: enviarpdf5235662
+
 // Inicializacion ------------------------------------------
 'use strict';
 window.addEventListener('DOMContentLoaded', init);
@@ -40,6 +43,7 @@ function activarDescargas() {
         x.classList.add('btn');
     });
     document.getElementById('desc-dct-btn').addEventListener('click', descargaDirecta);
+    document.getElementById('abrir-tab-btn').addEventListener('click', abrirDocTab);
 }
 
 function init() {
@@ -390,12 +394,15 @@ function generarPdf(arch) {
     return doc;
 }
 
-function mostrarPreview(doc) {
+function generarURI(doc) {
     // Pasa el documento a base64
-    let pdfURI = doc.output('datauristring');
+    console.log(doc.output('datauristring'));
+    return doc.output('datauristring');
+}
 
+function mostrarPreview(doc) {
     // Hace que el <iframe> visualize el codigo base64 generado
-    document.getElementById('pdf-preview').setAttribute('src', pdfURI);
+    document.getElementById('pdf-preview').setAttribute('src', doc);
 }
 
 function generacionDoc() {
@@ -429,15 +436,22 @@ function generacionDoc() {
         DOCUMENTO_PRINCIPAL.cambiarInfo(nuevoTitulo, nuevoContenido, nuevoNombre, nuevoApellido, nuevoEstilo);
         
         // Muestra el documento en el <iframe>
-        mostrarPreview(generarPdf(DOCUMENTO_PRINCIPAL));
+        mostrarPreview(generarURI(generarPdf(DOCUMENTO_PRINCIPAL)));
 
         activarDescargas();
     }
 }
 
 // DESCARGA DE DOCUMENTO
-
 function descargaDirecta() {
     let doc = generarPdf(DOCUMENTO_PRINCIPAL);
     doc.save(`${DOCUMENTO_PRINCIPAL.nombreInterno}.pdf`);
+}
+
+function abrirDocTab() {
+    let uri = generarURI(generarPdf(DOCUMENTO_PRINCIPAL));
+    window.open(
+        uri,
+        '_blank'
+    );
 }
