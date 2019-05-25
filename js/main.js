@@ -1,6 +1,3 @@
-// ID: documento_envio
-// API Key: enviarpdf5235662
-
 // Inicializacion ------------------------------------------
 'use strict';
 window.addEventListener('DOMContentLoaded', init);
