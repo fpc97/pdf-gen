@@ -13,6 +13,6 @@
     "jspdf": "^1.5.3"
   },
   "devDependencies": {
-    "node-sass": "^4.12.0"
+    "node-sass": "^7.0.0"
   }
 }
